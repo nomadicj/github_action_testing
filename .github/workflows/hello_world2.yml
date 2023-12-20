@@ -8,18 +8,18 @@ on:
     - cron: '*/5 * * * *'
 
 jobs:
-    deploy_dev:
-        runs-on: ubuntu-latest
-        environment: 
-            name: dev
-        steps:
-            - name: my-step
-              run: echo "Hello World!"
+  deploy:
+    strategy:
+      matrix:
+        env: [dev, sandbox, prod]
+        include:
+          - env: sandbox
+            other: sbx
 
-    deploy_prod:
-        runs-on: ubuntu-latest
-        environment: 
-            name: prod
-        steps:
-            - name: my-step
-              run: echo "Hello World!"
+    runs-on: ubuntu-latest
+    environment: 
+        name: ${{ matrix.env }}
+    steps:
+        - name: my-step
+          run: echo "Hello ${{ matrix.other || matrix.env }}!"
+
