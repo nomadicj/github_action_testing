@@ -1,7 +1,7 @@
-name: Deploy
+name: Deploy Later
 on:
   workflow_run:
-    workflows: ["Hello World"]
+    workflows: ["Deploy"]
     types:
       - completed
   #schedule:
