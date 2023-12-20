@@ -1,0 +1,25 @@
+name: Deploy
+on:
+  workflow_run:
+    workflows: ["Hello World"]
+    types:
+      - completed
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+    deploy_dev:
+        runs-on: ubuntu-latest
+        environment: 
+            name: dev
+        steps:
+            - name: my-step
+              run: echo "Hello World!"
+
+    deploy_prod:
+        runs-on: ubuntu-latest
+        environment: 
+            name: prod
+        steps:
+            - name: my-step
+              run: echo "Hello World!"
