@@ -4,8 +4,8 @@ on:
     workflows: ["Deploy"]
     types:
       - completed
-  #schedule:
-  #  - cron: '*/5 * * * *'
+  schedule:
+    - cron: '*/5 * * * *'
 
 jobs:
     deploy_dev:
